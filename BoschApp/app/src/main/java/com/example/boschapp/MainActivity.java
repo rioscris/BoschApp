@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
     Connection conexion;
 
     final String driver = "sqlserver";
-    final String host = "192.168.0.23";
-    final String server = "RIOSSQLSERVER";
+    final String host = "BUANB0810";
+    final String server = "SQLEXPRESS";
     final String port = "1433";
-    final String database = "dbApp";
-    final String dbUser = "sa";
-    final String dbPass = "F32EC8E5EE8AFE91341C131AC885FA542593BA44";
+    final String database = "dbo";
+    final String dbUser = "general";
+    final String dbPass = "general";
     final String url =      "jdbc:"+
             driver + "://" +
             host + "\\" +
@@ -47,15 +47,17 @@ public class MainActivity extends AppCompatActivity {
     public void ingresar(View view){
 
         try{
-            Connection conexion = DriverManager.getConnection("jdbc:sqlserver://192.168.0.23\\RIOSSQLSERVER:1433;databaseName=dbApp;user=sa;password=F32EC8E5EE8AFE91341C131AC885FA542593BA44");
+            Connection conexion = DriverManager.getConnection("jdbc:sqlserver://BUANB0810\\SQLEXPRESS:1433;databaseName=dbo;user=general;password=general");
             Statement statement = conexion.createStatement();
             estado.setText("¡Conectado!");
+            /*
             String query = "SELECT * FROM dbo.Login_Table";
             ResultSet rs = statement.executeQuery(query);
             estado.setText("Ejecutando");
             if(rs.next()){
                 estado.setText(rs.getString("users")+":"+rs.getString("pass"));
             }
+             */
         }catch(java.sql.SQLException e){
             estado.setText(e.getSQLState());
         }
